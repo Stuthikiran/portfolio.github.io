@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Concepts and Algorithms</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f0f8ff;
+            margin: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            color: #c0392b;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Key Concepts and Algorithms</h1>
+
+    <h2>1. Time Complexity Analysis</h2>
+    <p>Time complexity is a measure of the time an algorithm takes to process inputs relative to their size. Common notations:</p>
+    <ul>
+        <li><code>O(1)</code>: Constant time (e.g., accessing an array element).</li>
+        <li><code>O(log n)</code>: Logarithmic time (e.g., Binary Search).</li>
+        <li><code>O(n)</code>: Linear time (e.g., traversing an array).</li>
+        <li><code>O(n²)</code>: Quadratic time (e.g., Bubble Sort).</li>
+    </ul>
+
+    <h2>2. Binary Search Tree (BST)</h2>
+    <p>A binary tree where:</p>
+    <ul>
+        <li>The left subtree contains values smaller than the parent.</li>
+        <li>The right subtree contains values greater than the parent.</li>
+    </ul>
+    <pre><code>
+Algorithm Insert(Node, Value):
+1. If Node is NULL:
+   a. Create a new node with Value and return it.
+2. If Value < Node.key:
+   a. Node.left = Insert(Node.left, Value)
+3. Else:
+   a. Node.right = Insert(Node.right, Value)
+4. Return Node
+    </code></pre>
+
+    <h2>3. DFS (Depth-First Search)</h2>
+    <p>A graph traversal algorithm that explores as far as possible along each branch before backtracking.</p>
+    <pre><code>
+Algorithm DFS(Graph, Start):
+1. Initialize a stack and push Start.
+2. Mark Start as visited.
+3. While stack is not empty:
+   a. Node = Pop from stack.
+   b. For each neighbor of Node:
+      i. If neighbor is not visited:
+         - Mark neighbor as visited.
+         - Push neighbor into stack.
+    </code></pre>
+
+    <h2>4. BFS (Breadth-First Search)</h2>
+    <p>A graph traversal algorithm that explores all neighbors of a node before moving to the next level.</p>
+    <pre><code>
+Algorithm BFS(Graph, Start):
+1. Initialize a queue and enqueue Start.
+2. Mark Start as visited.
+3. While queue is not empty:
+   a. Node = Dequeue from queue.
+   b. For each neighbor of Node:
+      i. If neighbor is not visited:
+         - Mark neighbor as visited.
+         - Enqueue neighbor.
+    </code></pre>
+
+    <h2>5. Heap</h2>
+    <p>A binary tree where:</p>
+    <ul>
+        <li><strong>Max Heap</strong>: Parent node is greater than or equal to its children.</li>
+        <li><strong>Min Heap</strong>: Parent node is less than or equal to its children.</li>
+    </ul>
+    <pre><code>
+Algorithm Heapify(Array, n, i):
+1. largest = i
+2. left = 2*i + 1
+3. right = 2*i + 2
+4. If left < n and Array[left] > Array[largest]:
+   a. largest = left
+5. If right < n and Array[right] > Array[largest]:
+   a. largest = right
+6. If largest != i:
+   a. Swap Array[i] and Array[largest].
+   b. Call Heapify(Array, n, largest).
+    </code></pre>
+
+    <h2>6. Sorting</h2>
+    <p>Algorithms to arrange elements in a specific order. For example, Merge Sort:</p>
+    <pre><code>
+Algorithm MergeSort(Array, l, r):
+1. If l < r:
+   a. mid = (l + r) / 2
+   b. Call MergeSort(Array, l, mid)
+   c. Call MergeSort(Array, mid+1, r)
+   d. Merge(Array, l, mid, r)
+    </code></pre>
+
+    <h2>7. Pattern Searching</h2>
+    <p>Finding a specific pattern in a string. Example: Knuth-Morris-Pratt (KMP) Algorithm:</p>
+    <pre><code>
+Algorithm KMP(Pattern, Text):
+1. Build the LPS array for Pattern.
+2. i = 0, j = 0
+3. While i < length of Text:
+   a. If Pattern[j] == Text[i]:
+      i++, j++
+   b. If j == length of Pattern:
+      - Pattern found at index i-j
+      j = LPS[j-1]
+   c. Else if i < length of Text and Pattern[j] != Text[i]:
+      - If j != 0, j = LPS[j-1]
+      - Else, i++
+    </code></pre>
+
+    <h2>8. Graph Algorithms</h2>
+    <p>Algorithms for solving problems like shortest path, minimum spanning tree, etc. Example: Dijkstra's Algorithm:</p>
+    <pre><code>
+Algorithm Dijkstra(Graph, Source):
+1. Initialize distances for all nodes as infinity, except Source = 0.
+2. Create a priority queue and add Source.
+3. While queue is not empty:
+   a. Extract the node with the smallest distance.
+   b. For each neighbor of the node:
+      i. If new distance < current distance:
+         - Update the distance.
+         - Add the neighbor to the queue.
+    </code></pre>
+</body>
+</html>
